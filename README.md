@@ -243,6 +243,7 @@ $env:DB_PASSWORD="tu_password"
 mvnw.cmd spring-boot:run
 ```
 
+* Otra alternativa es setear los valores en el properties acorde a los valores de tu configuracion 
 ---
 
 
