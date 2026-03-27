@@ -194,6 +194,74 @@ DELETE /api/tasks/{id}
 
 ---
 
+## 🔐 Configuración de Variables de Entorno
+
+Este proyecto utiliza variables de entorno para evitar exponer información sensible como credenciales de base de datos o URLs.
+
+---
+
+### 📦 Backend (Spring Boot)
+
+El backend utiliza variables de entorno para la configuración de la base de datos.
+
+#### 🔧 Variables necesarias
+
+Crear un archivo `.env` en la raíz del proyecto backend basado en `.env.example`:
+
+
+
+Ejemplo de contenido:
+
+```env
+DB_URL=jdbc:postgresql://localhost:5432/task_manager_db
+DB_USERNAME=postgres
+DB_PASSWORD=tu_password
+```
+
+#### ⚙️ Configuración en Spring Boot
+
+El archivo `application.properties` está configurado para leer estas variables:
+
+```properties
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+```
+
+También incluye valores por defecto para facilitar pruebas locales.
+
+---
+
+#### ▶️ Ejecución con variables de entorno
+
+**PowerShell:**
+
+```bash
+$env:DB_URL="jdbc:postgresql://localhost:5432/task_manager_db"
+$env:DB_USERNAME="postgres"
+$env:DB_PASSWORD="tu_password"
+mvnw.cmd spring-boot:run
+```
+
+---
+
+
+
+
+### 🧠 Buenas prácticas aplicadas
+
+* Separación de configuración por entorno
+* Protección de credenciales sensibles
+* Configuración portable entre equipos
+* Uso de archivos `.env.example` como referencia
+
+---
+
+### 🎯 Objetivo
+
+Permitir que cualquier desarrollador pueda ejecutar el proyecto fácilmente sin exponer datos sensibles.
+
+
 # 👨‍💻 Autor
 
 Joseph Arias
